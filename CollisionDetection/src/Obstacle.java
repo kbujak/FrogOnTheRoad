@@ -1,6 +1,6 @@
 public class Obstacle extends Sprite {
 
-    private final int INITIAL_X = 400;
+    private final int INITIAL_X = 1000;
 
     public Obstacle(int x, int y) {
         super(x, y);

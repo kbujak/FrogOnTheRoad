@@ -31,8 +31,8 @@ public class Board extends JPanel implements ActionListener {
     private Image myBackground;
     private ArrayList<Obstacle> obstacles;
     private boolean ingame;
-    private final int B_WIDTH = 300;
-    private final int B_HEIGHT = 400;
+    private final int B_WIDTH = 1000;
+    private final int B_HEIGHT = 800;
     private final int ICRAFT_X = (B_WIDTH - 2*20)/2;
     private final int ICRAFT_Y = B_HEIGHT - 30;	//370
     private final int DELAY = 15;
@@ -61,7 +61,7 @@ public class Board extends JPanel implements ActionListener {
 
         frog = new Frog(ICRAFT_X, ICRAFT_Y);
         
-        ImageIcon ii = new ImageIcon("road.png");
+        ImageIcon ii = new ImageIcon("bg_honzik.png");
         myBackground = ii.getImage();
 
         initAliens();

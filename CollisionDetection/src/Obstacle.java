@@ -10,7 +10,7 @@ public class Obstacle extends Sprite {
 
     private void initObstacle() {
 
-        loadImage("car1.png");
+        loadImage("carYellow.png");
         getImageDimensions();
     }
 

@@ -6,6 +6,7 @@ public class Frog extends Sprite {
 
     private int dx = getBounds().width;
     private int dy = getBounds().height;
+	
 
     public Frog(int x, int y) {
         super(x, y);
@@ -14,7 +15,7 @@ public class Frog extends Sprite {
     }
 
     private void initCraft() {
-        loadImage("zaba1.png");
+        loadImage("newFrog.png");
         getImageDimensions();
     }
 

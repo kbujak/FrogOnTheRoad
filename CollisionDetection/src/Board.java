@@ -30,6 +30,7 @@ public class Board extends JPanel implements ActionListener {
     private Frog frog;
     private Image myBackground;
     private ArrayList<Obstacle> obstacles;
+    private ObstacleMeta meta;
     private boolean ingame;
     private final int B_WIDTH = 1000;
     private final int B_HEIGHT = 800;
@@ -59,18 +60,26 @@ public class Board extends JPanel implements ActionListener {
         ingame = true;
 
         setPreferredSize(new Dimension(B_WIDTH, B_HEIGHT));
-
+        
+        
         frog = new Frog(FROG_X, FROG_Y);
         
-        ImageIcon ii = new ImageIcon("bg_honzik.png");
+        ImageIcon ii = new ImageIcon("bg_honz2.png");
         myBackground = ii.getImage();
-
+        
         initAliens();
-
+        initMeta();
+        
         timer = new Timer(DELAY, this);
         timer.start();
     }
 
+    public void initMeta() {
+    	meta = new ObstacleMeta(META_X,META_Y);
+    	meta.initObstacleMeta();
+    }
+    
+    
     public void initAliens() {
     	obstacles = new ArrayList<>();
         

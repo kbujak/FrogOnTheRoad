@@ -1,3 +1,4 @@
+import java.awt.AlphaComposite;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -10,7 +11,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-
+import java.awt.Graphics2D;
+import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -116,7 +118,12 @@ public class Board extends JPanel implements ActionListener {
         }
         
         if (meta.isVisible()) {
-            g.drawImage(meta.getImage(), meta.getX(), meta.getY(),
+        	// to tez nie dziala :(
+        	//float alpha = 0.5f; //draw half transparent
+        	//AlphaComposite ac = AlphaComposite.getInstance(AlphaComposite.SRC_OVER,alpha);
+        	//g.setComposite(ac);
+            
+        	g.drawImage(meta.getImage(), meta.getX(), meta.getY(),
                     this);
         }
 
@@ -131,8 +138,7 @@ public class Board extends JPanel implements ActionListener {
     }
 
     private void drawGameOver(Graphics g) {
-    	Delays m = new Delays(2000);
-    	m.uspij();
+
     	
         String msg = "Game Over";
         Font small = new Font("Helvetica", Font.BOLD, 14);
@@ -201,6 +207,11 @@ public class Board extends JPanel implements ActionListener {
             Rectangle r2 = obstacle.getBounds();
 
             if (r3.intersects(r2)) {
+            	//tutaj mozna zmienic obrazek zaby na newFrogSplash.png 
+            	
+            	Delays m = new Delays(2000);
+            	m.uspij();
+            	
                 frog.setVisible(false);
                 obstacle.setVisible(false);
                 ingame = false;

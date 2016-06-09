@@ -123,10 +123,6 @@ public class Board extends JPanel implements ActionListener {
         }
         
         if (meta.isVisible()) {
-        	// to tez nie dziala :(
-        	//float alpha = 0.5f; //draw half transparent
-        	//AlphaComposite ac = AlphaComposite.getInstance(AlphaComposite.SRC_OVER,alpha);
-        	//g.setComposite(ac);
             
         	g.drawImage(meta.getImage(), meta.getX(), meta.getY(),
                     this);
@@ -232,6 +228,9 @@ public class Board extends JPanel implements ActionListener {
 
             if (r3.intersects(r2)) {
             	//tutaj mozna zmienic obrazek zaby na newFrogSplash.png 
+            	//frog.loadImage("newFrogSplash.png");
+            	//frog.image =
+            	repaint();
             	
             	Delays m = new Delays(2000);
             	m.uspij();

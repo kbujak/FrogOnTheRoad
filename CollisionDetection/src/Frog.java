@@ -22,7 +22,7 @@ public class Frog extends Sprite {
     public void move() {
     	
         x += dx;
-        //myDel.uspij(30); //nie da sie tak po prostu zrobic, trzeba by na oddzielnym watku zabe zrobic, zeby sie ruszala skokowo
+        //myDel.uspij(30); //nie da sie tak po prostu zrobic, trzeba by na oddzielnym watku zabe zrobic, zeby sie ruszala skokow
         y += dy;
         //myDel.uspij(30);
         
@@ -34,12 +34,12 @@ public class Frog extends Sprite {
             y = 1;
         }
         
-        if (x > 999) {
-            x = 999;
+        if (x > 900) {
+            x = 900;
         }
 
-        if (y > 799) {
-            y = 799;
+        if (y > 710) {
+            y = 710;
         }
     }
 

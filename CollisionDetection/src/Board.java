@@ -36,7 +36,8 @@ public class Board extends JPanel implements ActionListener {
     private final int FROG_X = B_WIDTH/2 - 90; // 500 - 90, 410 x zaby 
     private final int FROG_Y = B_HEIGHT - 90;	//710 pozycja y zaby
     private final int DELAY = 15;
-
+    private final int META_X = 400;
+    private final int META_Y = 0;
     
     private final int[][] pos = {
         {500, 220}, {200, 320}//,  //2 prawe pasy

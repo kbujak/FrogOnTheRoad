@@ -34,6 +34,7 @@ public class Board extends JPanel implements ActionListener {
     private ArrayList<Obstacle> obstacles;
     private ObstacleMeta meta;
     private boolean ingame;
+    private boolean win;
     private final int B_WIDTH = 1000;
     private final int B_HEIGHT = 800;
     private final int FROG_X = B_WIDTH/2 - 90; // 500 - 90, 410 x zaby 
@@ -104,7 +105,11 @@ public class Board extends JPanel implements ActionListener {
 
         } else {
 
-            drawGameOver(g);
+        	if(win)
+        		drawWin(g);
+        		
+        	else
+        		drawGameOver(g);
         }
 
         Toolkit.getDefaultToolkit().sync();
@@ -141,6 +146,19 @@ public class Board extends JPanel implements ActionListener {
 
     	
         String msg = "Game Over";
+        Font small = new Font("Helvetica", Font.BOLD, 14);
+        FontMetrics fm = getFontMetrics(small);
+
+        g.setColor(Color.white);
+        g.setFont(small);
+        g.drawString(msg, (B_WIDTH - fm.stringWidth(msg)) / 2,
+                B_HEIGHT / 2);
+    }
+    
+    private void drawWin(Graphics g) {
+
+    	
+        String msg = "Conratulations. You won!";
         Font small = new Font("Helvetica", Font.BOLD, 14);
         FontMetrics fm = getFontMetrics(small);
 
@@ -202,7 +220,13 @@ public class Board extends JPanel implements ActionListener {
     public void checkCollisions() {
 
         Rectangle r3 = frog.getBounds();
-
+        Rectangle r1 = meta.getBounds();
+        
+        if(r3.intersects(r1)){
+        	ingame = false;
+        	win = true;
+        }
+        
         for (Obstacle obstacle : obstacles) {
             Rectangle r2 = obstacle.getBounds();
 

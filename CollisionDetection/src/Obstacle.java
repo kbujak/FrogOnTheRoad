@@ -15,7 +15,7 @@ public class Obstacle extends Sprite {
     
     public Obstacle(int x, int y) {
         super(x, y);
-        //initObstacle(COLOR_RED,WAY_LEFT);
+        //initObstacle(COLOR_RED,WAY_LEFT); //blad przy obroceniu obrazka carX.png - loadImageRotate()
         initObstacle(COLOR_RED,WAY_RIGHT);
     }
 

@@ -6,7 +6,7 @@ public class ObstacleMeta extends Sprite {
         initObstacleMeta();
     }
 
-    void initObstacleMeta() {
+	private void initObstacleMeta() {
     	
         loadImage("meta.png");
         getImageDimensions();

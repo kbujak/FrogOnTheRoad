@@ -30,7 +30,7 @@ public class Board extends JPanel implements ActionListener {
     private Frog frog;
     private Image myBackground;
     private ArrayList<Obstacle> obstacles;
-    private ObstacleMeta meta;
+    private Obstacle meta;
     private boolean ingame;
     private final int B_WIDTH = 1000;
     private final int B_HEIGHT = 800;
@@ -75,8 +75,7 @@ public class Board extends JPanel implements ActionListener {
     }
 
     public void initMeta() {
-    	meta = new ObstacleMeta(META_X,META_Y);
-    	meta.initObstacleMeta();
+    	meta = new Obstacle(META_X,META_Y);
     }
     
     
@@ -115,6 +114,11 @@ public class Board extends JPanel implements ActionListener {
             g.drawImage(frog.getImage(), frog.getX(), frog.getY(),
                     this);
         }
+        
+        //if (meta.isVisible()) {
+        //    g.drawImage(meta.getImage(), meta.getX(), frog.getY(),
+        //            this);
+        //}
 
         for (Obstacle a : obstacles) {
             if (a.isVisible()) {
@@ -127,7 +131,9 @@ public class Board extends JPanel implements ActionListener {
     }
 
     private void drawGameOver(Graphics g) {
-
+    	Delays m = new Delays(2000);
+    	m.uspij();
+    	
         String msg = "Game Over";
         Font small = new Font("Helvetica", Font.BOLD, 14);
         FontMetrics fm = getFontMetrics(small);
@@ -183,6 +189,8 @@ public class Board extends JPanel implements ActionListener {
                 obstacles.remove(i);
             }
         }
+        
+        
     }
 
     public void checkCollisions() {

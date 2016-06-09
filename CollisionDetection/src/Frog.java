@@ -6,7 +6,7 @@ public class Frog extends Sprite {
 
     private int dx = getBounds().width;
     private int dy = getBounds().height;
-	Delays myDel = new Delays();
+	Delays myDel = new Delays(0);
     
     
     public Frog(int x, int y) {
@@ -22,7 +22,7 @@ public class Frog extends Sprite {
     public void move() {
     	
         x += dx;
-        //myDel.uspij(30); //nie da sie tak po prostu zrobic, trzeba by na oddzielnym watku zabe zrobic
+        //myDel.uspij(30); //nie da sie tak po prostu zrobic, trzeba by na oddzielnym watku zabe zrobic, zeby sie ruszala skokowo
         y += dy;
         //myDel.uspij(30);
         

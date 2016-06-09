@@ -22,7 +22,7 @@ public class Frog extends Sprite {
     public void move() {
     	
         x += dx;
-        //myDel.uspij(30);
+        //myDel.uspij(30); //nie da sie tak po prostu zrobic, trzeba by na oddzielnym watku zabe zrobic
         y += dy;
         //myDel.uspij(30);
         

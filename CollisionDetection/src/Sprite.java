@@ -1,6 +1,8 @@
 
 import java.awt.Image;
 import java.awt.Rectangle;
+
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
 
 public class Sprite {
@@ -29,6 +31,18 @@ public class Sprite {
 
         ImageIcon ii = new ImageIcon(imageName);
         image = ii.getImage();
+
+    }
+    
+    protected void loadImageRotate(String imageName) { //NIE DZIALA!
+    	
+        ImageIcon ii = new ImageIcon(imageName);
+        RotatedIcon r1 = new RotatedIcon(ii, RotatedIcon.Rotate.UPSIDE_DOWN);
+        
+        //image =  r1.getIcon();
+        //ii.setImage( r1 );
+        
+        
     }
 
     public Image getImage() {

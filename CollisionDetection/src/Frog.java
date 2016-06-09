@@ -6,11 +6,11 @@ public class Frog extends Sprite {
 
     private int dx = getBounds().width;
     private int dy = getBounds().height;
-	
-
+	Delays myDel = new Delays();
+    
+    
     public Frog(int x, int y) {
         super(x, y);
-
         initCraft();
     }
 
@@ -20,16 +20,26 @@ public class Frog extends Sprite {
     }
 
     public void move() {
-
+    	
         x += dx;
+        //myDel.uspij(30);
         y += dy;
-
+        //myDel.uspij(30);
+        
         if (x < 1) {
             x = 1;
         }
 
         if (y < 1) {
             y = 1;
+        }
+        
+        if (x > 999) {
+            x = 999;
+        }
+
+        if (y > 799) {
+            y = 799;
         }
     }
 
@@ -61,21 +71,21 @@ public class Frog extends Sprite {
         int key = e.getKeyCode();
 
         if (key == KeyEvent.VK_LEFT) {
-            dx = -2;
+            dx = -3;
             
         }
 
         if (key == KeyEvent.VK_RIGHT) {
-            dx = 2;
+            dx = 3;
         }
 
         if (key == KeyEvent.VK_UP) {
-            dy = -2;
+            dy = -3;
 
         }
 
         if (key == KeyEvent.VK_DOWN) {
-            dy = 2;
+            dy = 3;
         }
 
     }

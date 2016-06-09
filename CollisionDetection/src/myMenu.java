@@ -80,6 +80,7 @@ public class myMenu {
 				}
 			}
 		});
+		
 		btnAutorzy.setFont(new Font("HP Simplified", Font.PLAIN, 13));
 		btnAutorzy.setBounds(97, 257, 97, 25);
 		frame.getContentPane().add(btnAutorzy);

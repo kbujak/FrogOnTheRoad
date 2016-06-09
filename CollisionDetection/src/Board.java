@@ -33,14 +33,14 @@ public class Board extends JPanel implements ActionListener {
     private boolean ingame;
     private final int B_WIDTH = 1000;
     private final int B_HEIGHT = 800;
-    private final int ICRAFT_X = (B_WIDTH - 2*20)/2;
-    private final int ICRAFT_Y = B_HEIGHT - 30;	//370
+    private final int FROG_X = B_WIDTH/2 - 90; // 500 - 90, 410 x zaby 
+    private final int FROG_Y = B_HEIGHT - 90;	//710 pozycja y zaby
     private final int DELAY = 15;
 
     
     private final int[][] pos = {
-        {300, 300}, {280, 250}, {400, 280},
-        {400, 200}, {500, 250}, {500, 300}
+        {500, 220}, {200, 320}//,  //2 prawe pasy
+        //{400, 420}, {600, 520}, //2 lewe
     };
 
     
@@ -59,7 +59,7 @@ public class Board extends JPanel implements ActionListener {
 
         setPreferredSize(new Dimension(B_WIDTH, B_HEIGHT));
 
-        frog = new Frog(ICRAFT_X, ICRAFT_Y);
+        frog = new Frog(FROG_X, FROG_Y);
         
         ImageIcon ii = new ImageIcon("bg_honzik.png");
         myBackground = ii.getImage();
@@ -168,7 +168,7 @@ public class Board extends JPanel implements ActionListener {
 
         	Obstacle a = obstacles.get(i);
             if (a.isVisible()) {
-                a.move();
+                a.moveLeft();
             } else {
                 obstacles.remove(i);
             }

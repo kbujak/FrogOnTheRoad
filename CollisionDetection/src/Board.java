@@ -30,7 +30,7 @@ public class Board extends JPanel implements ActionListener {
     private Frog frog;
     private Image myBackground;
     private ArrayList<Obstacle> obstacles;
-    private Obstacle meta;
+    private ObstacleMeta meta;
     private boolean ingame;
     private final int B_WIDTH = 1000;
     private final int B_HEIGHT = 800;
@@ -63,7 +63,7 @@ public class Board extends JPanel implements ActionListener {
         
         
         frog = new Frog(FROG_X, FROG_Y);
-        
+       
         ImageIcon ii = new ImageIcon("bg_honz2.png");
         myBackground = ii.getImage();
         
@@ -75,7 +75,7 @@ public class Board extends JPanel implements ActionListener {
     }
 
     public void initMeta() {
-    	meta = new Obstacle(META_X,META_Y);
+    	meta = new ObstacleMeta(META_X,META_Y);
     }
     
     
@@ -115,10 +115,10 @@ public class Board extends JPanel implements ActionListener {
                     this);
         }
         
-        //if (meta.isVisible()) {
-        //    g.drawImage(meta.getImage(), meta.getX(), frog.getY(),
-        //            this);
-        //}
+        if (meta.isVisible()) {
+            g.drawImage(meta.getImage(), meta.getX(), meta.getY(),
+                    this);
+        }
 
         for (Obstacle a : obstacles) {
             if (a.isVisible()) {

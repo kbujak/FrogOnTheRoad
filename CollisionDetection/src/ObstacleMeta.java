@@ -1,7 +1,7 @@
 public class ObstacleMeta extends Sprite {
 
-    
-    public ObstacleMeta(int x, int y) {
+
+	public ObstacleMeta(int x, int y) {
         super(x, y);
         initObstacleMeta();
     }
@@ -10,6 +10,7 @@ public class ObstacleMeta extends Sprite {
     	
         loadImage("meta.png");
         getImageDimensions();
+        
     }
 
 

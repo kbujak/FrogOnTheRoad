@@ -33,6 +33,7 @@ public class Board extends JPanel implements ActionListener {
     private Image myBackground;
     private ArrayList<Obstacle> obstacles;
     private ObstacleMeta meta;
+    private int level = 1;
     private boolean ingame;
     private boolean win;
     private final int B_WIDTH = 1000;
@@ -57,9 +58,10 @@ public class Board extends JPanel implements ActionListener {
 
     private void initBoard() {
 
+    	//wzorzec projektowy obserwator
         addKeyListener(new TAdapter());
-        setFocusable(true);
         setBackground(Color.BLACK);
+        setFocusable(true);
         ingame = true;
 
         setPreferredSize(new Dimension(B_WIDTH, B_HEIGHT));
@@ -70,7 +72,7 @@ public class Board extends JPanel implements ActionListener {
         ImageIcon ii = new ImageIcon("bg_honz2.png");
         myBackground = ii.getImage();
         
-        initAliens();
+        initObstacles();
         initMeta();
         
         timer = new Timer(DELAY, this);
@@ -82,11 +84,8 @@ public class Board extends JPanel implements ActionListener {
     }
     
     
-    public void initAliens() {
-    	obstacles = new ArrayList<>();
-        
-        
-
+    public void initObstacles() {
+    	obstacles = new ArrayList<>();  
         for (int[] p : pos) {
             obstacles.add(new Obstacle(p[0], p[1]));
         }
@@ -99,19 +98,16 @@ public class Board extends JPanel implements ActionListener {
         super.paintComponent(g);
 
         if (ingame) {
-
         	g.drawImage(myBackground, 0, 0, this);
             drawObjects(g);
 
-        } else {
-
+        } 
+        else {
         	if(win)
-        		drawWin(g);
-        		
+        		drawWin(g);        		
         	else
         		drawGameOver(g);
         }
-
         Toolkit.getDefaultToolkit().sync();
     }
 
@@ -123,7 +119,6 @@ public class Board extends JPanel implements ActionListener {
         }
         
         if (meta.isVisible()) {
-            
         	g.drawImage(meta.getImage(), meta.getX(), meta.getY(),
                     this);
         }
@@ -135,7 +130,8 @@ public class Board extends JPanel implements ActionListener {
         }
 
         g.setColor(Color.WHITE);
-     //   g.drawString("Aliens left: " + obstacles.size(), 5, 15);
+        g.setFont(new Font("Helvetica", Font.BOLD, 30));
+        g.drawString("Poziom: " + level, 5, 35);
     }
 
     private void drawGameOver(Graphics g) {
@@ -168,12 +164,9 @@ public class Board extends JPanel implements ActionListener {
     public void actionPerformed(ActionEvent e) {
 
         inGame();
-
-        updateCraft();
-        updateAliens();
-
+        updateFrog();
+        updateObstacles();
         checkCollisions();
-
         repaint();
     }
 
@@ -184,7 +177,7 @@ public class Board extends JPanel implements ActionListener {
         }
     }
 
-    private void updateCraft() {
+    private void updateFrog() {
 
         if (frog.isVisible()) {
             frog.move();
@@ -192,7 +185,7 @@ public class Board extends JPanel implements ActionListener {
     }
 
 
-    private void updateAliens() {
+    private void updateObstacles() {
 
         if (obstacles.isEmpty()) {
 
@@ -244,8 +237,11 @@ public class Board extends JPanel implements ActionListener {
 
     }
 
+    //wzorzec projektowy obserwator
+    //to jest obserwator
     private class TAdapter extends KeyAdapter {
 
+    	//powiadomienie obserwatora
         @Override
         public void keyReleased(KeyEvent e) {
             frog.keyReleased(e);

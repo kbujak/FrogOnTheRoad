@@ -1,0 +1,11 @@
+1.	czy wykorzystano co najmniej trzy wzorce projektowe
+2.	czy prawid³owo zdekomponowano odpowiedzialnoœci
+3.	czy wykorzystano jakiœ wzorzec architektoniczny
+4.	czy projekt jest Mavenowy i czy poprawnie buduje siê z linii komend
+5.	czy budowany jest przez Mavena wykonywalny jar
+6.	czy zrealizowano co najmniej 5 przyk³adowych testów jednostkowych
+7.	czy testy jednostkowe maj¹ status PASSED w trakcie procesu budowania projektu przez Mavena
+8.	czy projekt zosta³ umieszczony pod kontrol¹ wersji za pomoc¹ Gita
+9.	czy struktura ga³êzi repozytorium jest prawid³owo zarz¹dzana
+10.	czy skorzystano z interfejsów i/lub klas abstrakcyjnych do reprezentowania abstrakcji jako jednego z elementów programowania obiektowego
+11.	czy skorzystano z polimorfizmu

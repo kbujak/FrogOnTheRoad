@@ -15,7 +15,7 @@ public class CollisionEx extends JFrame {
         setResizable(false);
         pack();
         
-        setTitle("¯aba");
+        setTitle("Zaba");
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }

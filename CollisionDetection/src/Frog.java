@@ -6,12 +6,17 @@ public class Frog extends Sprite {
 
     private int dx = getBounds().width;
     private int dy = getBounds().height;
+    private int life = 3;
 	Delays myDel = new Delays(0);
     
     
     public Frog(int x, int y) {
         super(x, y);
         initCraft();
+    }
+    public void initFrog(int x, int y){
+    	this.x=x;
+    	this.y=y;
     }
 
     private void initCraft() {
@@ -90,4 +95,13 @@ public class Frog extends Sprite {
 
     }
     
+    public int getLife(){
+    	
+    	return this.life;
+    }
+    
+    public void setLife(){
+    	
+    	this.life--;
+    }
 }

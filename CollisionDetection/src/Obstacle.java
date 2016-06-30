@@ -5,6 +5,7 @@ public class Obstacle extends Sprite {
     
     private final int WAY_RIGHT = 0;
     private final int WAY_LEFT = 1;
+    private int way;
      
     
     public Obstacle(int x, int y,Colors color) {
@@ -13,6 +14,11 @@ public class Obstacle extends Sprite {
         initObstacle(color,WAY_RIGHT);
     }
 
+    public int getWay(){
+    	
+    	return this.way;
+    }
+    
     private void initObstacle(Colors color, int way) {
     	if(way == WAY_RIGHT)
     			switch(color){
@@ -50,20 +56,20 @@ public class Obstacle extends Sprite {
         getImageDimensions();
     }
 
-    public void moveLeft(){
+    public void moveLeft(int speed){
 
         if (x < -100) {
             x = INITIAL_X_RIGHT;
         }
         
-        x -= 3;
+        x -= speed;
     }
     
-    public void moveRight(){
+    public void moveRight(int speed){
     	if (x > 1100) {
             x = INITIAL_X_LEFT;
         }
         
-        x += 3;
+        x += speed;
     }
 }

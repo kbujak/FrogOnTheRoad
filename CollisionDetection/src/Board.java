@@ -15,6 +15,7 @@ import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Random;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
@@ -33,7 +34,9 @@ public class Board extends JPanel implements ActionListener {
     private Image myBackground;
     private ArrayList<Obstacle> obstacles;
     private ObstacleMeta meta;
+    private Random rand = new Random();
     private int level = 1;
+    private int count = 2;
     private boolean ingame;
     private boolean win;
     private final int B_WIDTH = 1000;
@@ -46,8 +49,8 @@ public class Board extends JPanel implements ActionListener {
     private FactoryObstacle factory = new FactoryObstacle();
     
     private final int[][] pos = {
-        {500, 220}, {200, 320},  //2 prawe pasy
-        {400, 420}, {600, 520}, //2 lewe
+        {900, 520}, {200, 420},  //2 prawe pasy			(width, high)
+        //{400, 420}, {600, 520}, //2 lewe		(0-900) (220 - 520)
     };
 
     
@@ -69,15 +72,16 @@ public class Board extends JPanel implements ActionListener {
         
         
         frog = new Frog(FROG_X, FROG_Y);
-       
+        initObstacles();
         ImageIcon ii = new ImageIcon("bg_honz2.png");
         myBackground = ii.getImage();
         
-        initObstacles();
         initMeta();
         
         timer = new Timer(DELAY, this);
         timer.start();
+        
+        
     }
 
     public void initMeta() {
@@ -86,10 +90,21 @@ public class Board extends JPanel implements ActionListener {
     
     
     public void initObstacles() {
-    	obstacles = new ArrayList<>();  
-        for (int[] p : pos) {
-            obstacles.add((Obstacle)factory.create(p[0], p[1], Colors.COLOR_SEA));
+    	obstacles = new ArrayList<>();
+    	Obstacle temp;
+        if(level % 2 == 0){
+        	
+        	count++;
         }
+        
+        for(int i = 0 ; i < count; i++){
+        
+        	obstacles.add((Obstacle)factory.create(1*rand.nextInt(900),
+        			220 + 100*rand.nextInt(4),
+        			Colors.COLOR_SEA));
+       
+        }
+        	
     }
 
     
@@ -133,6 +148,7 @@ public class Board extends JPanel implements ActionListener {
         g.setColor(Color.WHITE);
         g.setFont(new Font("Helvetica", Font.BOLD, 30));
         g.drawString("Poziom: " + level, 5, 35);
+        g.drawString("Zycie: " + frog.getLife(), 5, 65);
     }
 
     private void drawGameOver(Graphics g) {
@@ -198,7 +214,7 @@ public class Board extends JPanel implements ActionListener {
 
         	Obstacle a = obstacles.get(i);
             if (a.isVisible()) {
-                a.moveLeft();
+            		a.moveLeft(level*1);
             } else {
                 obstacles.remove(i);
             }
@@ -212,20 +228,28 @@ public class Board extends JPanel implements ActionListener {
         Rectangle r3 = frog.getBounds();
         Rectangle r1 = meta.getBounds();
         
-        if(r3.intersects(r1)){
+        if(level == 3){
         	ingame = false;
         	win = true;
+        }
+        if(r3.intersects(r1)){
+        	level+=1;
+        	frog.initFrog(FROG_X, FROG_Y);
+        	initObstacles();
         }
         
         for (Obstacle obstacle : obstacles) {
             Rectangle r2 = obstacle.getBounds();
 
             if (r3.intersects(r2)) {
-            	//tutaj mozna zmienic obrazek zaby na newFrogSplash.png 
-            	//frog.loadImage("newFrogSplash.png");
-            	//frog.image =
-            	repaint();
             	
+            	frog.setLife();
+            	frog.initFrog(FROG_X, FROG_Y);
+            	
+            }
+            if( frog.getLife() == 0){
+            	
+            	repaint();
             	Delays m = new Delays(2000);
             	m.uspij();
             	

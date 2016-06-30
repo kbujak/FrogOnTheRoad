@@ -43,10 +43,11 @@ public class Board extends JPanel implements ActionListener {
     private final int DELAY = 15;
     private final int META_X = 400;
     private final int META_Y = 0;
+    private FactoryObstacle factory = new FactoryObstacle();
     
     private final int[][] pos = {
-        {500, 220}, {200, 320}//,  //2 prawe pasy
-        //{400, 420}, {600, 520}, //2 lewe
+        {500, 220}, {200, 320},  //2 prawe pasy
+        {400, 420}, {600, 520}, //2 lewe
     };
 
     
@@ -87,7 +88,7 @@ public class Board extends JPanel implements ActionListener {
     public void initObstacles() {
     	obstacles = new ArrayList<>();  
         for (int[] p : pos) {
-            obstacles.add(new Obstacle(p[0], p[1]));
+            obstacles.add((Obstacle)factory.create(p[0], p[1], Colors.COLOR_SEA));
         }
     }
 

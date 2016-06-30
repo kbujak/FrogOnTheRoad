@@ -11,20 +11,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.awt.Graphics2D;
-import java.awt.image.BufferedImage;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
-
-import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
-import java.util.Random;
 
 
 public class Board extends JPanel implements ActionListener {
@@ -36,8 +28,7 @@ public class Board extends JPanel implements ActionListener {
     private ObstacleMeta meta;
     private Random rand = new Random();
     private int level = 1;
-    private int count = 2;
-    private int speed = 0;
+    static int speed = 1;
     private boolean ingame;
     private boolean win;
     private boolean continued;
@@ -49,11 +40,9 @@ public class Board extends JPanel implements ActionListener {
     private final int META_X = 400;
     private final int META_Y = 0;
     private FactoryObstacle factory = new FactoryObstacle();
+    private Facade facade = new Facade();
     
-    private final int[][] pos = {
-        {900, 520}, {200, 420},  //2 prawe pasy			(width, high)
-        //{400, 420}, {600, 520}, //2 lewe		(0-900) (220 - 520)
-    };
+ 
 
     
 
@@ -69,17 +58,12 @@ public class Board extends JPanel implements ActionListener {
         setBackground(Color.BLACK);
         setFocusable(true);
         ingame = true;
-
         setPreferredSize(new Dimension(B_WIDTH, B_HEIGHT));
-        
-        
         frog = new Frog(FROG_X, FROG_Y);
         initObstacles();
         ImageIcon ii = new ImageIcon("bg_honz2.png");
-        myBackground = ii.getImage();
-        
+        myBackground = ii.getImage(); 
         initMeta();
-        
         timer = new Timer(DELAY, this);
         timer.start();
         
@@ -92,44 +76,15 @@ public class Board extends JPanel implements ActionListener {
     
     
     public void initObstacles() {
+    	
+    	
     	obstacles = new ArrayList<>();
-    	Obstacle temp;
     	
-    	if((level+1)%2 == 0)
-    		speed+=3;
+    	//wzorzec projektowy fasada
+    	//na podstawie poziomu dobiera ustawienie i szybkoœæ samochodów
+    	facade.prepareForLevel(level, obstacles);
     	
-        if(level % 2 == 0){
-        	
-        	count++;
-        }
-        
-        for(int i = 0 ; i < count; i++){
-        
-        	obstacles.add((Obstacle)factory.create(1*rand.nextInt(900),
-        			220 + 100*rand.nextInt(4),
-        			rand.nextInt(4)));
-        /*	Obstacle a = obstacles.get(i);
-        	Rectangle r = a.getBounds();
-        	do{
-        		continued = false;
-        	for(int j=0; i > 0 && j<obstacles.size(); j++){
-        		
-        		if(j != i){
-        			Obstacle b = obstacles.get(j);
-        			Rectangle r1 = b.getBounds();
-        			if(r.intersects(r1)){
-        				
-        			obstacles.set(i, (Obstacle)factory.create(1*rand.nextInt(900),
-        			220 + 100*rand.nextInt(4),
-        			rand.nextInt(4)));
-        			continued = false;
-        			break;
-        			}
-        		}
-        	  }
-        }while(continued);
-*/
-    }
+    	
     }
 
     
@@ -270,6 +225,9 @@ public class Board extends JPanel implements ActionListener {
             	
             	frog.setLife();
             	frog.initFrog(FROG_X, FROG_Y);
+            	obstacles = new ArrayList<>();
+            	facade.prepareForLevel(level, obstacles);
+            	
             	
             }
             if( frog.getLife() == 0){

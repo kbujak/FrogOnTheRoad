@@ -9,6 +9,7 @@ public class Obstacle extends Sprite {
     private final int COLOR_YELLOW = 1;
     private final int COLOR_SEA = 2;
     private final int COLOR_BLUE = 3;
+    
      
     
     public Obstacle(int x, int y,int color) {

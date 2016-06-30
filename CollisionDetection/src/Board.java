@@ -37,8 +37,10 @@ public class Board extends JPanel implements ActionListener {
     private Random rand = new Random();
     private int level = 1;
     private int count = 2;
+    private int speed = 0;
     private boolean ingame;
     private boolean win;
+    private boolean continued;
     private final int B_WIDTH = 1000;
     private final int B_HEIGHT = 800;
     private final int FROG_X = B_WIDTH/2 - 90; // 500 - 90, 410 x zaby 
@@ -92,6 +94,10 @@ public class Board extends JPanel implements ActionListener {
     public void initObstacles() {
     	obstacles = new ArrayList<>();
     	Obstacle temp;
+    	
+    	if((level+1)%2 == 0)
+    		speed+=3;
+    	
         if(level % 2 == 0){
         	
         	count++;
@@ -101,10 +107,29 @@ public class Board extends JPanel implements ActionListener {
         
         	obstacles.add((Obstacle)factory.create(1*rand.nextInt(900),
         			220 + 100*rand.nextInt(4),
-        			Colors.COLOR_SEA));
-       
-        }
-        	
+        			rand.nextInt(4)));
+        /*	Obstacle a = obstacles.get(i);
+        	Rectangle r = a.getBounds();
+        	do{
+        		continued = false;
+        	for(int j=0; i > 0 && j<obstacles.size(); j++){
+        		
+        		if(j != i){
+        			Obstacle b = obstacles.get(j);
+        			Rectangle r1 = b.getBounds();
+        			if(r.intersects(r1)){
+        				
+        			obstacles.set(i, (Obstacle)factory.create(1*rand.nextInt(900),
+        			220 + 100*rand.nextInt(4),
+        			rand.nextInt(4)));
+        			continued = false;
+        			break;
+        			}
+        		}
+        	  }
+        }while(continued);
+*/
+    }
     }
 
     
@@ -214,7 +239,7 @@ public class Board extends JPanel implements ActionListener {
 
         	Obstacle a = obstacles.get(i);
             if (a.isVisible()) {
-            		a.moveLeft(level*1);
+            		a.moveLeft(speed);
             } else {
                 obstacles.remove(i);
             }
@@ -228,7 +253,7 @@ public class Board extends JPanel implements ActionListener {
         Rectangle r3 = frog.getBounds();
         Rectangle r1 = meta.getBounds();
         
-        if(level == 3){
+        if(level == 8){
         	ingame = false;
         	win = true;
         }
@@ -250,9 +275,6 @@ public class Board extends JPanel implements ActionListener {
             if( frog.getLife() == 0){
             	
             	repaint();
-            	Delays m = new Delays(2000);
-            	m.uspij();
-            	
                 frog.setVisible(false);
                 obstacle.setVisible(false);
                 ingame = false;

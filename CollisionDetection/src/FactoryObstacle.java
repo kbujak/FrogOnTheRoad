@@ -1,7 +1,7 @@
 
 class FactoryObstacle implements Factory{
 
-	public Sprite create(int x, int y, Colors color) {
+	public Sprite create(int x, int y, int color) {
 		
 		return new Obstacle(x,y,color);
 	}

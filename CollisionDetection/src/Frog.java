@@ -7,6 +7,7 @@ public class Frog extends Sprite {
     private int dx = getBounds().width;
     private int dy = getBounds().height;
     private int life = 3;
+    private int speed = 5;
 	Delays myDel = new Delays(0);
     
     
@@ -76,21 +77,21 @@ public class Frog extends Sprite {
         int key = e.getKeyCode();
 
         if (key == KeyEvent.VK_LEFT) {
-            dx = -3;
+            dx = -speed;
             
         }
 
         if (key == KeyEvent.VK_RIGHT) {
-            dx = 3;
+            dx = speed;
         }
 
         if (key == KeyEvent.VK_UP) {
-            dy = -3;
+            dy = -speed;
 
         }
 
         if (key == KeyEvent.VK_DOWN) {
-            dy = 3;
+            dy = speed;
         }
 
     }

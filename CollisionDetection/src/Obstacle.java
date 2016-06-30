@@ -5,22 +5,20 @@ public class Obstacle extends Sprite {
     
     private final int WAY_RIGHT = 0;
     private final int WAY_LEFT = 1;
-    private int way;
+    private final int COLOR_RED = 0;
+    private final int COLOR_YELLOW = 1;
+    private final int COLOR_SEA = 2;
+    private final int COLOR_BLUE = 3;
      
     
-    public Obstacle(int x, int y,Colors color) {
+    public Obstacle(int x, int y,int color) {
         super(x, y);
         //initObstacle(COLOR_RED,WAY_LEFT); //blad przy obroceniu obrazka carX.png - loadImageRotate()
-        initObstacle(color,WAY_RIGHT);
+        initObstacle(color);
     }
 
-    public int getWay(){
-    	
-    	return this.way;
-    }
     
-    private void initObstacle(Colors color, int way) {
-    	if(way == WAY_RIGHT)
+    private void initObstacle(int color) {
     			switch(color){
     			case COLOR_RED:
     				loadImage("carRed.png");
@@ -35,23 +33,7 @@ public class Obstacle extends Sprite {
     				loadImage("carBlue.png");
     				break;
     			}
-    	else if(way == WAY_LEFT){
     	
-    		switch(color){
-			case COLOR_RED:
-				loadImageRotate("carRed.png");
-				break;
-			case COLOR_YELLOW:
-				loadImageRotate("carYellow.png");
-				break;
-			case COLOR_SEA:
-				loadImageRotate("carSea.png");
-				break;
-			case COLOR_BLUE:
-				loadImageRotate("carBlue.png");
-				break;
-    		}
-    	}
         //loadImage("carYellow.png");
         getImageDimensions();
     }

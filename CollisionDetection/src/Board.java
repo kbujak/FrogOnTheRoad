@@ -16,6 +16,7 @@ import java.util.Random;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import javax.swing.Timer;
+import java.util.Scanner;
 
 
 
@@ -30,6 +31,7 @@ public class Board extends JPanel implements ActionListener {
     private int level = 1;
     static int speed = 1;
     private boolean ingame;
+    private boolean lost;
     private boolean win;
     private boolean continued;
     private final int B_WIDTH = 1000;
@@ -41,6 +43,7 @@ public class Board extends JPanel implements ActionListener {
     private final int META_Y = 0;
     private FactoryObstacle factory = new FactoryObstacle();
     private Facade facade = new Facade();
+    Delays myDel = new Delays(0);
     
  
 
@@ -82,7 +85,7 @@ public class Board extends JPanel implements ActionListener {
     	
     	//wzorzec projektowy fasada
     	//na podstawie poziomu dobiera ustawienie i szybkoœæ samochodów
-    	facade.prepareForLevel(level, obstacles);
+    	facade.prepareForLevel(level, obstacles, 0);
     	
     	
     }
@@ -93,7 +96,8 @@ public class Board extends JPanel implements ActionListener {
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
 
-        if (ingame) {
+        if(ingame){ 
+        
         	g.drawImage(myBackground, 0, 0, this);
             drawObjects(g);
 
@@ -135,13 +139,18 @@ public class Board extends JPanel implements ActionListener {
 
     	
         String msg = "Game Over";
-        Font small = new Font("Helvetica", Font.BOLD, 14);
-        FontMetrics fm = getFontMetrics(small);
+        Font font = new Font("Helvetica", Font.BOLD, 40);
+        FontMetrics fm = getFontMetrics(font);
 
         g.setColor(Color.white);
-        g.setFont(small);
+        g.setFont(font);
         g.drawString(msg, (B_WIDTH - fm.stringWidth(msg)) / 2,
                 B_HEIGHT / 2);
+        
+       	
+        	
+        
+        
     }
     
     private void drawWin(Graphics g) {
@@ -156,6 +165,9 @@ public class Board extends JPanel implements ActionListener {
         g.drawString(msg, (B_WIDTH - fm.stringWidth(msg)) / 2,
                 B_HEIGHT / 2);
     }
+    
+    
+
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -224,10 +236,9 @@ public class Board extends JPanel implements ActionListener {
             if (r3.intersects(r2)) {
             	
             	frog.setLife();
-            	frog.initFrog(FROG_X, FROG_Y);
+            	frog.initFrog(FROG_X, FROG_Y);           	
             	obstacles = new ArrayList<>();
-            	facade.prepareForLevel(level, obstacles);
-            	
+            	facade.prepareForLevel(level, obstacles,1);
             	
             }
             if( frog.getLife() == 0){

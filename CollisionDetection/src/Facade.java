@@ -13,14 +13,14 @@ public class Facade {
     private Rectangle RtheOldOne;
     
 
-	public void prepareForLevel(int level, ArrayList<Obstacle> obstacles) {
+	public void prepareForLevel(int level, ArrayList<Obstacle> obstacles, int flag) {
 
 		int checkedForIntersection =0;
 		
-		if((level+1)%2 == 0)
+		if((level+1)%2 == 0 && flag == 0)
     		Board.speed +=3;
     	
-        if(level % 2 == 0){
+        if(level % 2 == 0 && flag == 0){
         	
         	count++;
         }

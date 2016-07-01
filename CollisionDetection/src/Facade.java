@@ -8,7 +8,6 @@ public class Facade {
 	private int count = 2;
     private FactoryObstacle factory = new FactoryObstacle();
     private Random rand = new Random();
-    private boolean continued;
     private Obstacle tryThisOne, theOldOne;
     private Rectangle RtheOldOne;
     

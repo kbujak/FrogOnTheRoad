@@ -87,12 +87,12 @@ public class myMenu {
 		btnNewButton_1.setFont(new Font("HP Simplified", Font.PLAIN, 13));
 		btnNewButton_1.setBounds(97, 295, 97, 25);
 		frame.getContentPane().add(btnNewButton_1);
-		
+		/*
 		JButton btnNewButton_2 = new JButton("O GRZE");
 		btnNewButton_2.setFont(new Font("HP Simplified", Font.PLAIN, 13));
 		btnNewButton_2.setBounds(97, 222, 97, 25);
 		frame.getContentPane().add(btnNewButton_2);
-		
+		*/
 		JLabel lblNewLabel = new JLabel("New label");
 		lblNewLabel.setIcon(new ImageIcon("road.png"));
 		lblNewLabel.setBounds(0, 0, 296, 364);

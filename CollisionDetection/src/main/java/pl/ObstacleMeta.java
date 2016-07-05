@@ -1,3 +1,5 @@
+package pl;
+
 public class ObstacleMeta extends Sprite {
 
 

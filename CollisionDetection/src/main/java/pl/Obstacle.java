@@ -1,3 +1,5 @@
+package pl;
+
 public class Obstacle extends Sprite {
 
     private final int INITIAL_X_RIGHT = 1000;

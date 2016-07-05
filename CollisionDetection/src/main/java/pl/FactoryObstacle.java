@@ -1,3 +1,5 @@
+package pl;
+
 //polimorfizm
  class FactoryObstacle implements Factory{
 

@@ -1,3 +1,5 @@
+package pl;
+
 
 //interfejs reprezentuj¹cy abstrakcjê
 public interface Factory {

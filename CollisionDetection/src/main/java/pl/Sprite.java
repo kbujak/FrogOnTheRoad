@@ -1,3 +1,5 @@
+package pl;
+
 
 import java.awt.Image;
 import java.awt.Rectangle;
@@ -12,8 +14,18 @@ public class Sprite {
     protected int width;
     protected int height;
     protected boolean vis;
-    protected Image image;
+    public Image image;
 
+    public void set(int x,int y,int width,int height, boolean vis)
+    {
+    	this.x = x;
+        this.y = y;
+        this.width = width;
+        this.height = height;
+        this.vis = vis;
+        
+    }
+    
     public Sprite(int x, int y) {
 
         this.x = x;
@@ -27,7 +39,7 @@ public class Sprite {
         height = image.getHeight(null);
     }
 
-    protected void loadImage(String imageName) {
+    public void loadImage(String imageName) {
 
         ImageIcon ii = new ImageIcon(imageName);
         image = ii.getImage();

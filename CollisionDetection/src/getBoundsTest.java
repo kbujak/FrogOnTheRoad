@@ -4,7 +4,7 @@ import java.awt.Image;
 import java.awt.Rectangle;
 
 import org.junit.Test;
-
+//pierwszy test jednostkowy
 public class getBoundsTest {
 
 	@Test

@@ -1,7 +1,7 @@
 import static org.junit.Assert.*;
 
 import org.junit.Test;
-
+//trzeci test jednostkowy
 public class getXTest {
 
 	@Test

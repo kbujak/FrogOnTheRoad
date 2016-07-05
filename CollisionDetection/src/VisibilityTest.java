@@ -3,7 +3,7 @@ import static org.junit.Assert.*;
 import java.awt.Image;
 
 import org.junit.Test;
-
+//pi¹ty test jednostkowy
 public class VisibilityTest {
 
 	@Test

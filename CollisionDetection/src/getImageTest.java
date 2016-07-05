@@ -3,7 +3,7 @@ import static org.junit.Assert.*;
 import java.awt.Image;
 
 import org.junit.Test;
-
+//drugi test jednostkowy
 public class getImageTest {
 
 	@Test

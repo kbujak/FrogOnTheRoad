@@ -8,6 +8,7 @@ public class Facade {
 	private int count = 2;
     private FactoryObstacle factory = new FactoryObstacle();
     private Random rand = new Random();
+    private boolean continued;
     private Obstacle tryThisOne, theOldOne;
     private Rectangle RtheOldOne;
     
@@ -29,6 +30,7 @@ public class Facade {
         for(int howManyIsRightNow = 0 ;  howManyIsRightNow < count; howManyIsRightNow++){
         	
         	if(howManyIsRightNow == 0){
+        		//wzorzed projektowy fabryka
         		obstacles.add((Obstacle)factory.create(1*rand.nextInt(900),
             			220 + 100*rand.nextInt(4),
             			rand.nextInt(4)));

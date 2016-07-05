@@ -28,9 +28,8 @@ public class Frog extends Sprite {
     public void move() {
     	
         x += dx;
-        //myDel.uspij(30); //nie da sie tak po prostu zrobic, trzeba by na oddzielnym watku zabe zrobic, zeby sie ruszala skokow
+        
         y += dy;
-        //myDel.uspij(30);
         
         if (x < 1) {
             x = 1;

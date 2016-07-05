@@ -91,7 +91,8 @@ public class Board extends JPanel implements ActionListener {
     }
 
     
-    
+    //czêœæ widoku wzorca architektonicznego mvc
+    //opisuje jak wyœwietliæ pewn¹ czêœæ modelu
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
@@ -168,6 +169,8 @@ public class Board extends JPanel implements ActionListener {
     
     
 
+    //czêœæ logiczna wzorca architektonicznego mvc
+    //stanowi model
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -255,6 +258,8 @@ public class Board extends JPanel implements ActionListener {
 
     //wzorzec projektowy obserwator
     //to jest obserwator
+    //który jednoczeœnie stanowi czêœæ kontrolera we wzorcu architektonicznym mvc
+    //dostaje od u¿ytkownika dane wejœciowe w postaci przycisków i powiadamia dalej
     private class TAdapter extends KeyAdapter {
 
     	//powiadomienie obserwatora

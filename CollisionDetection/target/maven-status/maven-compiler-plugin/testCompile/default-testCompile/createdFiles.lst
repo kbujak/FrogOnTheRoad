@@ -1,6 +1,6 @@
-pl\getBoundsTest.class
-pl\getXTest.class
-pl\AllTests.class
-pl\VisibilityTest.class
-pl\getImageTest.class
-pl\getYTest.class
+pl\edu\pk\frogOnTheRoad\VisibilityTest.class
+pl\edu\pk\frogOnTheRoad\getImageTest.class
+pl\edu\pk\frogOnTheRoad\getXTest.class
+pl\edu\pk\frogOnTheRoad\getYTest.class
+pl\edu\pk\frogOnTheRoad\AllTests.class
+pl\edu\pk\frogOnTheRoad\getBoundsTest.class

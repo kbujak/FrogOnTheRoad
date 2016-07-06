@@ -34,7 +34,7 @@
       			</descriptorRefs>
   				<archive>
   					<manifest>
-  						<mainClass>pl.myMenu</mainClass>
+  						<mainClass>pl.edu.pk.frogOnTheRoad.myMenu</mainClass>
   					</manifest>
   				</archive>
   			</configuration>
